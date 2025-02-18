@@ -1,0 +1,29 @@
+@use 'reset';
+@use 'variables';
+@use 'scroll';
+@use 'mixins';
+@use 'typography';
+
+html {
+  font-size: 0.625rem;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "Nekst", Arial, sans-serif;
+  background: var(--background-color);
+  color: var(--black-color);
+
+  font-size: 1.6rem;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
