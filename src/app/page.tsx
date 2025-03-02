@@ -6,11 +6,7 @@ async function HomePage() {
   await protectPage()
 
   return (
-    <div>
-      <h1>Home Page</h1>
-      <p>(only for loggedIn user)</p>
-      <p>Для проверки прав, есть страницы: /premium, /admin, /manager</p>
-
+    <div className='h-screen flex items-center justify-center'>
       <ProfileInfo />
     </div>
   )
