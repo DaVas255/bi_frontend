@@ -1,1 +1,1 @@
-export const SITE_NAME = 'VDA'
+export const SITE_NAME = 'BI-system'
