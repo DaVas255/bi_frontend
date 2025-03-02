@@ -6,12 +6,17 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useTransition } from 'react'
 
+import { Loader } from '@/components/ui/Loader/Loader'
+import { Button } from '@/components/ui/button/Button'
+
 import { PUBLIC_PAGES } from '@/config/pages/public.config'
 
-import { useProfile } from './hooks/useProfile'
+import styles from './Profile.module.scss'
+import UploadPhoto from '@/app/assets/icons/UploadPhoto.svg'
+import { useProfile } from '@/app/hooks/useProfile'
 import authService from '@/services/auth/auth.service'
 
-export function ProfileInfo() {
+export function Profile() {
   const { push } = useRouter()
 
   const { user, isLoading } = useProfile()
@@ -30,38 +35,37 @@ export function ProfileInfo() {
 
   const isLogoutLoading = isLogoutPending || isPending
 
-  if (isLoading) return <div className='mt-10'>Загружаю профиль...</div>
+  if (isLoading) return <Loader />
 
   return (
-    <div>
-      {user.avatarPath && (
+    <div className={styles.profile}>
+      <div className={styles.profile__avatar}>
         <Image
-          src={user.avatarPath}
+          src={user.avatarPath ? user.avatarPath : '/default-avatar.webp'}
           alt='Avatar'
-          width={70}
-          height={70}
+          width={160}
+          height={160}
         />
-      )}
-      <h2>Привет, {user.name || 'Аноним'}</h2>
-      <br />
-      <p>
-        Ваш email: {user.email}{' '}
-        <i>
-          ({user.verificationToken ? 'Требует подтверждения' : 'Подтверждена'})
-        </i>
-      </p>
-      <br />
-      <p>Права: {user.rights?.join(', ')}</p>
-      <br />
-      <button
+        <UploadPhoto className={styles.profile__uploadPhoto} />
+      </div>
+
+      <h2 className={styles.profile__title}>
+        Привет, {user.name || 'Аноним'}!
+      </h2>
+      <p className={styles.profile__email}>{user.email} </p>
+      <Button
         onClick={() => mutateLogout()}
         disabled={isLogoutLoading}
         className={cn('mt-2 bg-indigo-500 text-white px-4 py-2 rounded-md', {
           '': isLogoutLoading
         })}
+        type='button'
+        background
+        name={isLogoutLoading ? 'Выходим...' : 'Выход'}
       >
-        {isLogoutLoading ? 'Выходим...' : 'Выйти'}
-      </button>
+        {' '}
+        {isLogoutLoading ? 'Выходим...' : 'Выход'}
+      </Button>
     </div>
   )
 }
