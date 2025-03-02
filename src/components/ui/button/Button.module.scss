@@ -1,0 +1,26 @@
+@import '@/app/assets/styles/mixins';
+
+.button {
+  width: 100%;
+  padding: 10px;
+
+  border: 1px solid var(--main-color);
+  border-radius: var(--border-radius);
+  background-color: transparent;
+
+  color: var(--main-color);
+  font-weight: 500;
+
+  @include buttonHover;
+
+  &:disabled {
+    background-color: #cecfd7;
+    color: #ffffffb2;
+  }
+
+  &-background {
+    background-color: var(--main-color);
+    color: #fff;
+    border: none;
+  }
+}

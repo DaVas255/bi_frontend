@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 
-import { AuthForm } from './auth-form/AuthForm'
+import { AuthForm } from '@/components/features/Auth/AuthForm'
+
+import styles from './../AuthPage.module.scss'
 
 export const metadata: Metadata = {
   title: 'Login'
@@ -8,11 +10,9 @@ export const metadata: Metadata = {
 
 export default function LoginPage() {
   return (
-    <div className='min-h-screen flex items-center justify-center'>
-      <div className='bg-neutral-900 p-8 rounded-lg shadow-md'>
-        <h2 className='font-semibold mb-4'>Вход</h2>
-        <AuthForm isLogin />
-      </div>
+    <div className={styles.authPage}>
+      <h2 className={styles.authPage__title}>Вход</h2>
+      <AuthForm isLogin />
     </div>
   )
 }

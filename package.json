@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@ant-design/v5-patch-for-react-19": "^1.0.3",
+    "@svgr/webpack": "^8.1.0",
     "@trivago/prettier-plugin-sort-imports": "^5.2.1",
     "@types/js-cookie": "^3.0.6",
     "@types/lodash.debounce": "^4.0.9",

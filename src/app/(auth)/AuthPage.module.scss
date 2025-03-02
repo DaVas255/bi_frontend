@@ -1,0 +1,14 @@
+.authPage {
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  &__title {
+    font-size: 24px;
+    font-weight: 500;
+  }
+}

@@ -1,0 +1,27 @@
+.auth {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__recaptcha {
+    filter: invert(1) grayscale(1);
+  }
+
+  &__toggle {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__toggleButton {
+    background-color: transparent;
+    color: var(--info-color);
+  }
+}

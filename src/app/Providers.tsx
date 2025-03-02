@@ -6,12 +6,29 @@ import { PropsWithChildren, useState } from 'react'
 import { Toaster } from 'react-hot-toast'
 
 export function Providers({ children }: PropsWithChildren) {
-  const [client] = useState(new QueryClient())
+  const [client] = useState(
+    new QueryClient({
+      defaultOptions: {
+        queries: {
+          refetchOnWindowFocus: false
+        }
+      }
+    })
+  )
 
   return (
     <QueryClientProvider client={client}>
       {children}
-      <Toaster />
+      <Toaster
+        position='bottom-left'
+        reverseOrder={true}
+        toastOptions={{
+          style: {
+            background: '#333',
+            color: '#fff'
+          }
+        }}
+      />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   )

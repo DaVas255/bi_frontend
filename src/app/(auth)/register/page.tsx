@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 
-import { AuthForm } from '../login/auth-form/AuthForm'
+import { AuthForm } from '@/components/features/Auth/AuthForm'
+
+import styles from './../AuthPage.module.scss'
 
 export const metadata: Metadata = {
   title: 'Register'
@@ -8,11 +10,9 @@ export const metadata: Metadata = {
 
 export default function RegisterPage() {
   return (
-    <div className='min-h-screen flex items-center justify-center'>
-      <div className='bg-neutral-900 p-8 rounded-lg shadow-md'>
-        <h2 className='font-semibold mb-4'>Регистрация</h2>
-        <AuthForm isLogin={false} />
-      </div>
+    <div className={styles.authPage}>
+      <h2 className={styles.authPage__title}>Регистрация</h2>
+      <AuthForm isLogin={false} />
     </div>
   )
 }

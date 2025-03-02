@@ -1,0 +1,68 @@
+.input {
+  width: 100%;
+  padding: 15px 10px;
+
+  border-radius: 0.8rem;
+  border: 1px solid #d6d7dc;
+  outline: none;
+  background-color: transparent;
+
+  color: var(--info-complementary-color);
+  cursor: text;
+
+  &-container {
+    position: relative;
+    width: 100%;
+  }
+
+  &::placeholder {
+    color: #7f8186;
+  }
+
+  &:hover {
+    border-color: var(--main-color);
+  }
+
+  &:focus {
+    border-color: var(--main-complementary-color);
+    box-shadow: 0 0 5px rgba(78, 73, 228, 0.5);
+  }
+
+  &-error {
+    border-color: var(--error-color);
+  }
+
+  &:disabled {
+    background-color: #bfc1ca;
+    border-color: #bfc1ca;
+
+    &:hover {
+      border-color: #bfc1ca;
+      color: #595b61;
+
+      &::placeholder {
+        color: #595b61;
+      }
+    }
+  }
+
+  &__error-label {
+    color: var(--error-color);
+    font-size: 1.2rem;
+  }
+}
+
+.toggle-password {
+  position: absolute;
+  top: 30%;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #fffcfc;
+}
+
+.toggle-password:hover {
+  color: #9b9898;
+}
