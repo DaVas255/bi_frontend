@@ -1,36 +1,9 @@
-import { cookies } from 'next/headers'
+import { Profile } from '@/components/features/Profile/Profile'
 
-import { IUser } from '@/types/types'
-
-import { EnumTokens } from '@/services/auth/auth.service'
-
-// Для любителей пописать сервер на Next.js
-const fetchProfile = async () => {
-  'use server'
-
-  const cookie = cookies()
-  const accessToken = cookie.get(EnumTokens.ACCESS_TOKEN)?.value
-
-  return fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/profile`, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`
-    }
-  }).then(res => res.json()) as Promise<IUser>
-}
+import { protectPage } from '@/utils/server/protect-page'
 
 export default async function ProfilePage() {
-  const profile = await fetchProfile()
+  await protectPage()
 
-  return (
-    <div>
-      {profile ? (
-        <>
-          <h1>Profile</h1>
-          <p>{profile.email}</p>
-        </>
-      ) : (
-        <p>Not found!</p>
-      )}
-    </div>
-  )
+  return <Profile />
 }

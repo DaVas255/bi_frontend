@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 
+import { Header } from '@/components/widgets/Header/Header'
+
 import { SITE_NAME } from '@/constants/seo.constants'
 
 import { Providers } from './Providers'
@@ -22,7 +24,8 @@ export default function RootLayout({
     <html lang='en'>
       <body>
         <Providers>
-          <main>{children}</main>
+          <Header />
+          <main className='h-9/10 p-5 flex'>{children}</main>
         </Providers>
       </body>
     </html>

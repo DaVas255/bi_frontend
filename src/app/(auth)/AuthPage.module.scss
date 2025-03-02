@@ -1,11 +1,10 @@
 .authPage {
-  height: 100vh;
-
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 15px;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 
   &__title {
     font-size: 24px;

@@ -35,7 +35,12 @@ export function Profile() {
 
   const isLogoutLoading = isLogoutPending || isPending
 
-  if (isLoading) return <Loader />
+  if (isLoading)
+    return (
+      <div className='w-full h-full flex justify-center items-center'>
+        <Loader />
+      </div>
+    )
 
   return (
     <div className={styles.profile}>
