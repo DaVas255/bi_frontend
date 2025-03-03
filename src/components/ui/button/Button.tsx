@@ -10,7 +10,7 @@ interface ButtonProps {
   className?: string
   background?: boolean
   onClick?: () => void
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(

@@ -1,5 +1,9 @@
-async function HomePage() {
-  return <div className=''>Главная</div>
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Главная'
 }
 
-export default HomePage
+export default function HomePage() {
+  return <div className=''>Главная</div>
+}

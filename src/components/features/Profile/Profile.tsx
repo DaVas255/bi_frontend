@@ -11,9 +11,10 @@ import { Button } from '@/components/ui/button/Button'
 
 import { PUBLIC_PAGES } from '@/config/pages/public.config'
 
+import { useProfile } from '@/hooks/useProfile'
+
 import styles from './Profile.module.scss'
 import UploadPhoto from '@/app/assets/icons/UploadPhoto.svg'
-import { useProfile } from '@/app/hooks/useProfile'
 import authService from '@/services/auth/auth.service'
 
 export function Profile() {
