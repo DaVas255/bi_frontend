@@ -1,10 +1,13 @@
 'use server'
 
+import { notFound, redirect } from 'next/navigation'
+
 import { PUBLIC_PAGES } from '@/config/pages/public.config'
-import { UserRole } from '@/services/auth/auth.types'
+
 import { getServerAuth } from '@/utils/server/get-server-auth'
 import type { TUserDataState } from '@/utils/transform-user-to-state'
-import { notFound, redirect } from 'next/navigation'
+
+import { UserRole } from '@/services/auth/auth.types'
 
 type RoleCheckFunction = (user: TUserDataState) => boolean
 

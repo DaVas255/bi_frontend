@@ -9,6 +9,6 @@ export interface IUser {
   rights: UserRole[]
 }
 
-export interface IFormData extends Pick<IUser, 'email'> {
-  password: string
+export interface IFormData extends IUser {
+  password: string | undefined
 }

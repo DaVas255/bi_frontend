@@ -1,5 +1,7 @@
-import { axiosClassic } from '@/api/axios'
 import { IFormData, IUser } from '@/types/types'
+
+import { axiosClassic } from '@/api/axios'
+
 import { removeFromStorage, saveTokenStorage } from './auth.helper'
 
 interface IAuthResponse {
@@ -34,9 +36,8 @@ class AuthService {
   }
 
   async getNewTokens() {
-    const response = await axiosClassic.post<IAuthResponse>(
-      '/auth/access-token'
-    )
+    const response =
+      await axiosClassic.post<IAuthResponse>('/auth/access-token')
 
     if (response.data.accessToken) saveTokenStorage(response.data.accessToken)
 

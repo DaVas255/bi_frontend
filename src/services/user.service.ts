@@ -1,5 +1,6 @@
+import { IFormData, IUser } from '@/types/types'
+
 import { instance } from '@/api/axios'
-import { IUser } from '@/types/types'
 
 class UserService {
   private _BASE_URL = '/users'
@@ -18,6 +19,10 @@ class UserService {
 
   async fetchList() {
     return instance.get<IUser[]>(`${this._BASE_URL}/list`)
+  }
+
+  async updateProfile(data: IFormData) {
+    return instance.put<IUser>(`${this._BASE_URL}/profile`, data)
   }
 }
 

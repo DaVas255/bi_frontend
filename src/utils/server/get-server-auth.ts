@@ -1,13 +1,15 @@
 'use server'
 
-import authService, { EnumTokens } from '@/services/auth/auth.service'
-import { ITokenInside } from '@/services/auth/auth.types'
 import { jwtVerify } from 'jose'
 import { cookies } from 'next/headers'
+
 import {
-  transformUserToState,
-  TUserDataState
+  TUserDataState,
+  transformUserToState
 } from '../transform-user-to-state'
+
+import authService, { EnumTokens } from '@/services/auth/auth.service'
+import { ITokenInside } from '@/services/auth/auth.types'
 
 export async function getServerAuth(): Promise<TUserDataState | null> {
   const JWT_SECRET = process.env.JWT_SECRET

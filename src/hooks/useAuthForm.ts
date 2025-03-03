@@ -6,8 +6,9 @@ import ReCAPTCHA from 'react-google-recaptcha'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
-import authService from '@/services/auth/auth.service'
 import { IFormData } from '@/types/types'
+
+import authService from '@/services/auth/auth.service'
 
 export function useAuthForm(isLogin: boolean) {
   const { register, handleSubmit, reset } = useForm<IFormData>()
