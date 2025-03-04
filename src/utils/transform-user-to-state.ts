@@ -1,4 +1,4 @@
-import { type TProtectUserData, UserRole } from '@/services/auth/auth.types'
+import { type TProtectUserData, UserRole } from '@/types/auth.types'
 
 export type TUserDataState = {
   id: number

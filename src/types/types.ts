@@ -1,4 +1,4 @@
-import { UserRole } from '@/services/auth/auth.types'
+import { UserRole } from '@/types/auth.types'
 
 export interface IUser {
   id: number
