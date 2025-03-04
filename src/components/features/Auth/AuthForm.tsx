@@ -33,6 +33,17 @@ export function AuthForm({ isLogin }: AuthFormProps) {
         />
       </label>
 
+      {!isLogin && (
+        <label className={styles.auth__field}>
+          Имя
+          <Input
+            type='text'
+            placeholder='Enter name: '
+            {...register('name', { required: true })}
+          />
+        </label>
+      )}
+
       <label className={styles.auth__field}>
         Пароль
         <Input
