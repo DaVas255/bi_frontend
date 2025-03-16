@@ -1,0 +1,37 @@
+.aside {
+  width: 20%;
+  padding: 20px 30px;
+  border-right: 2px solid #272626;
+  background-color: #3e3c3c;
+
+  &__logo {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 3px;
+    margin-left: auto;
+    margin-bottom: 30px;
+
+    border: 1px solid #fff;
+    border-radius: 10px;
+
+    font-size: 22px;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 20px;
+
+    border-top: 1px solid #a4a2a2;
+  }
+
+  &__navLink {
+    &_active {
+      color: var(--info-color);
+      border-bottom: 1px solid var(--info-color);
+    }
+  }
+}

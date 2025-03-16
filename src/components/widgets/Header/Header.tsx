@@ -4,8 +4,9 @@ import cn from 'clsx'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+import { PROTECT_PAGES } from '@/config/pages/protect.config'
+
 import styles from './Header.module.scss'
-import Logo from '@/app/assets/icons/Logo.svg'
 import ProfileSvg from '@/app/assets/icons/ProfileSvg.svg'
 
 export const Header = () => {
@@ -14,30 +15,10 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <Link
-        href='/'
-        className={styles.header__logo}
-      >
-        BI
-        <Logo />
-      </Link>
-
-      <nav className={styles.header__nav}>
-        <Link
-          href='/'
-          className={cn(
-            (styles.header__navLink,
-            pathName === '/' && styles.header__navLink_active)
-          )}
-        >
-          Главная
-        </Link>
-      </nav>
-
-      <Link
-        href='/profile'
+        href={PROTECT_PAGES.PROFILE}
         className={cn(
           styles.header__profile,
-          pathName === '/profile' && styles.header__profile_active
+          pathName === PROTECT_PAGES.PROFILE && styles.header__profile_active
         )}
       >
         <ProfileSvg />

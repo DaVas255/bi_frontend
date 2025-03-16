@@ -29,14 +29,14 @@ export const protectPage = async (roles: TRoles = UserRole.USER) => {
       : redirect(PUBLIC_PAGES.LOGIN)
   }
 
-  for (const role of rolesArray) {
-    const checkRole = roleChecks[role]
-    if (checkRole && !checkRole(user)) {
-      if (role === UserRole.PREMIUM) {
-        return redirect(PUBLIC_PAGES.PLANS)
-      } else {
-        return notFound()
-      }
-    }
-  }
+  // for (const role of rolesArray) {
+  //   const checkRole = roleChecks[role]
+  //   if (checkRole && !checkRole(user)) {
+  //     if (role === UserRole.PREMIUM) {
+  //       return redirect(PUBLIC_PAGES.PLANS)
+  //     } else {
+  //       return notFound()
+  //     }
+  //   }
+  // }
 }
