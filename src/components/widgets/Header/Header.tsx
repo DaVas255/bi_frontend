@@ -6,14 +6,26 @@ import { usePathname } from 'next/navigation'
 
 import { PROTECT_PAGES } from '@/config/pages/protect.config'
 
+import { useToggleAside } from '@/hooks/useToggleAside'
+
 import styles from './Header.module.scss'
+import MenuBurger from '@/app/assets/icons/MenuBurger.svg'
 import ProfileSvg from '@/app/assets/icons/ProfileSvg.svg'
 
 export const Header = () => {
   const pathName = usePathname()
 
+  const { isOpen, toggleAside } = useToggleAside()
+
   return (
     <header className={styles.header}>
+      <button
+        onClick={toggleAside}
+        className={cn(styles.header__burger, { hidden: isOpen })}
+      >
+        <MenuBurger />
+      </button>
+
       <Link
         href={PROTECT_PAGES.PROFILE}
         className={cn(
