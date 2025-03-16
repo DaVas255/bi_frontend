@@ -5,7 +5,7 @@ export interface AsideSliceState {
 }
 
 const initialState: AsideSliceState = {
-  open: true
+  open: false
 }
 
 export const asideSlice = createAppSlice({
