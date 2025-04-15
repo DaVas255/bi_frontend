@@ -1,9 +1,14 @@
-import type { Metadata } from 'next'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Manager content'
-}
+import { useQuery } from '@tanstack/react-query'
+
+import imsService from '@/services/ims/ims.service'
 
 export default function NewConnect() {
-  return 'sssssss'
+  const { data, isLoading } = useQuery({
+    queryKey: ['ims'],
+    queryFn: () => imsService.getAll()
+  })
+
+  return <div>{JSON.stringify(data)}</div>
 }
