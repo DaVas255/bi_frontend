@@ -1,5 +1,4 @@
 class PublicPages {
-  HOME = '/'
   LOGIN = '/login'
   REGISTER = '/register'
   PLANS = '/plans'
