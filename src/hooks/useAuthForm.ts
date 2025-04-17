@@ -12,64 +12,51 @@ import authService from '@/services/auth/auth.service'
 
 export function useAuthForm(isLogin: boolean) {
   const { register, handleSubmit, reset } = useForm<IFormData>()
-
   const router = useRouter()
   const [isPending, startTransition] = useTransition()
-
   const recaptchaRef = useRef<ReCAPTCHA>(null)
 
-  const { mutate: mutateLogin, isPending: isLoginPending } = useMutation({
-    mutationKey: ['login'],
+  const mutationOptions = (
+    mutationFn: (data: IFormData, token: string | null) => Promise<any>,
+    successCallback: () => void
+  ) => ({
     mutationFn: (data: IFormData) =>
-      authService.main('login', data, recaptchaRef?.current?.getValue()),
-    onSuccess() {
+      mutationFn(data, recaptchaRef.current?.getValue() ?? null),
+    onSuccess: () => {
       startTransition(() => {
         reset()
-        router.push('/')
+        successCallback()
       })
     },
-    onError(error) {
-      console.log(error)
+    onError: (error: unknown) => {
       if (axios.isAxiosError(error)) {
-        if (error.response?.data?.message === 'Email or password invalid') {
-          toast.error('Не правильный логин или пароль')
-        } else {
-          toast.error(error.response?.data?.message)
-        }
+        toast.error(error.response?.data?.message || 'Произошла ошибка')
+      } else {
+        toast.error('Произошла непредвиденная ошибка')
       }
+      recaptchaRef.current?.reset()
     }
   })
 
-  const { mutate: mutateRegister, isPending: isRegisterPending } = useMutation({
-    mutationKey: ['register'],
-    mutationFn: (data: IFormData) =>
-      authService.main('register', data, recaptchaRef?.current?.getValue()),
-    onSuccess() {
-      startTransition(() => {
-        reset()
-        router.push('/')
-      })
-    },
-    onError(error) {
-      if (axios.isAxiosError(error)) {
-        if (error.response?.data?.message === 'User already exists') {
-          toast.error('Пользователь уже зарегистрирован')
-        } else {
-          toast.error(error.response?.data?.message)
-        }
-      }
-    }
-  })
+  const { mutate: loginMutate, isPending: isLoginPending } = useMutation(
+    mutationOptions(authService.main.bind(null, 'login'), () =>
+      router.push('/')
+    )
+  )
+
+  const { mutate: registerMutate, isPending: isRegisterPending } = useMutation(
+    mutationOptions(authService.main.bind(null, 'register'), () =>
+      router.push('/')
+    )
+  )
 
   const onSubmit: SubmitHandler<IFormData> = data => {
-    const token = recaptchaRef?.current?.getValue()
-
+    const token = recaptchaRef.current?.getValue()
     if (!token) {
       toast.error('Пройдите капчу!')
       return
     }
-
-    isLogin ? mutateLogin(data) : mutateRegister(data)
+    isLogin ? loginMutate(data) : registerMutate(data)
   }
 
   const isLoading = isPending || isLoginPending || isRegisterPending
