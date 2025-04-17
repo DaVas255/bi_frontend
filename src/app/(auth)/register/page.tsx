@@ -5,7 +5,7 @@ import { AuthForm } from '@/components/features/Auth/AuthForm'
 import styles from './../AuthPage.module.scss'
 
 export const metadata: Metadata = {
-  title: 'Register'
+  title: 'Регистрация'
 }
 
 export default function RegisterPage() {
