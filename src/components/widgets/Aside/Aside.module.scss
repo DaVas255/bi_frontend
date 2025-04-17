@@ -1,69 +1,99 @@
 .aside {
   position: fixed;
-  z-index: 10000;
+  z-index: 100;
   top: 0;
-  left: -100%; /* Начальное скрытое положение */
+  left: -100%;
   height: 100vh;
-  padding: 20px 30px;
-  margin-right: -130px;
+  width: 280px; /* Немного шире */
+  padding: 30px;
+  transition: left 0.3s ease-in-out;
+  background-color: #24292f; /* Темный фон, как у GitHub */
+  color: #f0f6fc; /* Светлый текст */
+  border-right: 1px solid #30363d; /* Более темная граница */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Тонкая тень справа */
 
-  border-right: 2px solid #272626;
-  background-color: #3e3c3c;
+  @media screen and (max-width: 1024px) {
+    width: 30%;
+  }
 
-  /* Добавляем transition для анимации свойства left и width */
-  transition:
-    left 0.1s ease-in-out,
-    width 0.1s ease-in-out,
-    margin-right 0.1s ease-in-out;
+  @media screen and (max-width: 768px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
 
   &.aside_open {
-    left: 0; /* Конечное открытое положение */
-    width: 25%;
-    margin-right: 0;
-
-    @media screen and (max-width: 1024px) {
-      width: 30%;
-    }
-
-    @media screen and (max-width: 768px) {
-      width: 50%;
-    }
-
-    @media screen and (max-width: 480px) {
-      width: 100%;
-    }
+    left: 0;
   }
 
   &__logo {
-    width: fit-content;
     display: flex;
     align-items: center;
-    gap: 3px;
-    padding: 3px;
-    margin-left: auto;
-    margin-bottom: 30px;
-
-    border: 1px solid #fff;
-    border-radius: 10px;
-
-    font-size: 22px;
-
+    gap: 10px;
+    margin-bottom: 40px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #58a6ff; /* Акцентный цвет для логотипа */
     cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: rgba(88, 166, 255, 0.1);
+    }
+
+    svg {
+      width: 28px;
+      height: 28px;
+      fill: #58a6ff;
+    }
   }
 
   &__nav {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
     padding-top: 20px;
-
-    border-top: 1px solid #a4a2a2;
+    border-top: 1px solid #30363d;
   }
 
   &__navLink {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    border-radius: 6px;
+    color: #c9d1d9; /* Более светлый текст для пунктов */
+    text-decoration: none;
+    transition:
+      background-color 0.2s ease-in-out,
+      color 0.2s ease-in-out;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      fill: #8b949e; /* Цвет иконок */
+      transition: fill 0.2s ease-in-out;
+    }
+
+    &:hover {
+      background-color: #30363d;
+      color: #f0f6fc;
+      svg {
+        fill: #c9d1d9;
+      }
+    }
+
     &_active {
-      color: var(--info-color);
-      border-bottom: 1px solid var(--info-color);
+      color: #58a6ff;
+      font-weight: 500;
+      background-color: rgba(88, 166, 255, 0.1);
+      svg {
+        fill: #58a6ff;
+      }
     }
   }
 }

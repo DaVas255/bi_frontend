@@ -1,6 +1,7 @@
 'use client'
 
 import cn from 'clsx'
+import { Home, Plus } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -32,6 +33,7 @@ export default function Aside() {
             [styles.aside__navLink_active]: pathName === '/'
           })}
         >
+          <Home size={20} />
           Главная
         </Link>
 
@@ -42,6 +44,7 @@ export default function Aside() {
               pathName === PROTECT_PAGES.NEW_CONNECT
           })}
         >
+          <Plus size={20} />
           Создать
         </Link>
       </nav>
