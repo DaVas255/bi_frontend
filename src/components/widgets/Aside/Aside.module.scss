@@ -1,7 +1,8 @@
 .aside {
-  position: relative;
+  position: fixed;
+  z-index: 10000;
   top: 0;
-  left: -100%;
+  left: -100%; /* Начальное скрытое положение */
   height: 100vh;
   padding: 20px 30px;
   margin-right: -130px;
@@ -9,13 +10,14 @@
   border-right: 2px solid #272626;
   background-color: #3e3c3c;
 
-  @media screen and (max-width: 1024px) {
-    position: fixed;
-    z-index: 100;
-  }
+  /* Добавляем transition для анимации свойства left и width */
+  transition:
+    left 0.1s ease-in-out,
+    width 0.1s ease-in-out,
+    margin-right 0.1s ease-in-out;
 
   &.aside_open {
-    left: 0;
+    left: 0; /* Конечное открытое положение */
     width: 25%;
     margin-right: 0;
 
