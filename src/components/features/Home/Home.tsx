@@ -1,160 +1,98 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useCallback, useEffect, useState } from 'react'
+import GridLayout, { Layout, WidthProvider } from 'react-grid-layout'
+import 'react-grid-layout/css/styles.css'
+import 'react-resizable/css/styles.css'
+
+import PlatformOverviewWidget from '@/components/HopePageWidgets/PlatformOverviewWidget/PlatformOverviewWidget'
+import { Loader } from '@/components/ui/Loader/Loader'
+
 import {
-  Bar,
-  BarChart,
-  Cell,
-  Legend,
-  Line,
-  LineChart,
-  Pie,
-  PieChart,
-  PolarAngleAxis,
-  PolarGrid,
-  PolarRadiusAxis,
-  Radar,
-  RadarChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis
-} from 'recharts'
+  loadDashboardLayout,
+  saveDashboardLayout
+} from '@/utils/dashboard-layout-storage'
 
-import { barData, lineData, pieData, radarData } from './mock'
+import styles from './Home.module.scss'
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']
+const ResponsiveGridLayout = WidthProvider(GridLayout)
 
-export default function Home() {
-  return (
-    <div className='w-full h-full rounded-md overflow-auto bg-gray-900 text-white p-6'>
-      <motion.h1
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className='text-3xl font-bold text-center'
-      >
-        📊 BI SYSTEM
-      </motion.h1>
+interface DashboardState {
+  layout: Layout[]
+}
 
-      <div className='grid md:grid-cols-2 gap-8 mt-8'>
-        {/* Линейный график */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className='bg-gray-800 p-6 rounded-xl shadow-lg'
-        >
-          <h2 className='text-xl font-semibold mb-4'>📈 Рост доходов</h2>
-          <ResponsiveContainer
-            width='100%'
-            height={250}
-          >
-            <LineChart data={lineData}>
-              <Tooltip />
-              <Line
-                type='monotone'
-                dataKey='value'
-                stroke='#4CAF50'
-                strokeWidth={3}
-                dot={{ r: 5 }}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </motion.div>
+function HomePage() {
+  const [state, setState] = useState<DashboardState>({ layout: [] })
+  const [loading, setLoading] = useState(true)
 
-        {/* Круговой график */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className='bg-gray-800 p-6 rounded-xl shadow-lg'
-        >
-          <h2 className='text-xl font-semibold mb-4'>
-            📊 Распределение расходов
-          </h2>
-          <ResponsiveContainer
-            width='100%'
-            height={250}
-          >
-            <PieChart>
-              <Pie
-                data={pieData}
-                dataKey='value'
-                cx='50%'
-                cy='50%'
-                outerRadius={80}
-              >
-                {pieData.map((_, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-            </PieChart>
-          </ResponsiveContainer>
-        </motion.div>
+  useEffect(() => {
+    const initialLayout = loadDashboardLayout()
+    setState({ layout: initialLayout })
+    setLoading(false)
+  }, [])
 
-        {/* Столбчатый график */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className='bg-gray-800 p-6 rounded-xl shadow-lg'
-        >
-          <h2 className='text-xl font-semibold mb-4'>📊 Ежемесячные продажи</h2>
-          <ResponsiveContainer
-            width='100%'
-            height={250}
-          >
-            <BarChart data={barData}>
-              <XAxis dataKey='name' />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar
-                dataKey='продажи'
-                fill='#8884d8'
-              />
-            </BarChart>
-          </ResponsiveContainer>
-        </motion.div>
+  const onLayoutChange = useCallback((layout: Layout[]) => {
+    setState({ layout })
+    saveDashboardLayout(layout)
+  }, [])
 
-        {/* Радарный график */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className='bg-gray-800 p-6 rounded-xl shadow-lg'
-        >
-          <h2 className='text-xl font-semibold mb-4'>📊 Категории трат</h2>
-          <ResponsiveContainer
-            width='100%'
-            height={250}
-          >
-            <RadarChart
-              cx='50%'
-              cy='50%'
-              outerRadius='80%'
-              data={radarData}
-            >
-              <PolarGrid />
-              <PolarAngleAxis dataKey='category' />
-              <PolarRadiusAxis />
-              <Radar
-                name='Расход'
-                dataKey='расход'
-                stroke='#FF8042'
-                fill='#FF8042'
-                fillOpacity={0.6}
-              />
-              <Tooltip />
-            </RadarChart>
-          </ResponsiveContainer>
-        </motion.div>
+  if (loading) {
+    return (
+      <div className='w-full h-full flex justify-center items-center'>
+        <Loader />
       </div>
+    )
+  }
+
+  return (
+    <div className={styles.container}>
+      <ResponsiveGridLayout
+        className='layout'
+        layout={state.layout}
+        cols={12}
+        rowHeight={150}
+        isResizable
+        isDraggable
+        onLayoutChange={onLayoutChange}
+      >
+        <div
+          key='overview'
+          className={styles.widget}
+        >
+          <PlatformOverviewWidget />
+        </div>
+        <div
+          key='ims'
+          className={styles.widget}
+        >
+          <div className={styles.widgetContent}>Активность в IMS (скоро)</div>
+        </div>
+        <div
+          key='top-courses'
+          className={styles.widget}
+        >
+          <div className={styles.widgetContent}>
+            Топ активных курсов (скоро)
+          </div>
+        </div>
+        <div
+          key='events'
+          className={styles.widget}
+        >
+          <div className={styles.widgetContent}>Последние события (скоро)</div>
+        </div>
+        <div
+          key='kpi'
+          className={styles.widget}
+        >
+          <div className={styles.widgetContent}>
+            Ключевые показатели (скоро)
+          </div>
+        </div>
+        {/* Add other widgets here with their unique keys */}
+      </ResponsiveGridLayout>
     </div>
   )
 }
+
+export default HomePage

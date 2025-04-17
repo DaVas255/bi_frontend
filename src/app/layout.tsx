@@ -28,7 +28,7 @@ export default function RootLayout({
           <Aside />
           <div className='w-full h-full flex flex-col'>
             <Header />
-            <main>{children}</main>
+            <main className='w-full h-full overflow-y-auto'>{children}</main>
           </div>
         </Providers>
       </body>
