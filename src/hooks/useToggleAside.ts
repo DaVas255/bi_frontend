@@ -1,7 +1,13 @@
-import { useCallback } from 'react'
+import { useCallback } from 'react';
 
-import { selectOpen, toggle } from '@/app/lib/features/aside/asideSlice'
-import { useAppDispatch, useAppSelector } from '@/app/lib/hooks'
+
+
+import { selectOpen, toggle } from '@/app/lib/store/features/aside/asideSlice';
+import { useAppDispatch, useAppSelector } from '@/app/lib/store/hooks';
+
+
+
+
 
 export function useToggleAside() {
   const isOpen = useAppSelector(selectOpen)

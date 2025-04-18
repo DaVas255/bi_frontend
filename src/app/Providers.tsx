@@ -7,7 +7,7 @@ import { PropsWithChildren, useEffect, useRef, useState } from 'react'
 import { Toaster } from 'react-hot-toast'
 import { Provider } from 'react-redux'
 
-import { AppStore, makeStore } from './lib/store'
+import { AppStore, makeStore } from './lib/store/store'
 
 export function Providers({ children }: PropsWithChildren) {
   const [client] = useState(
