@@ -13,9 +13,9 @@ import { PUBLIC_PAGES } from '@/config/pages/public.config'
 
 import { useProfile } from '@/hooks/useProfile'
 
-import styles from './Profile.module.scss'
 import UploadPhoto from '@/app/assets/icons/UploadPhoto.svg'
 import authService from '@/services/auth/auth.service'
+import styles from './Profile.module.scss'
 
 export function Profile() {
   const { push } = useRouter()
@@ -51,6 +51,7 @@ export function Profile() {
           alt='Avatar'
           width={160}
           height={160}
+          priority={true}
         />
         <UploadPhoto className={styles.profile__uploadPhoto} />
       </div>
