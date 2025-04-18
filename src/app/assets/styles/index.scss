@@ -2,7 +2,6 @@
 @use 'variables';
 @use 'scroll';
 @use 'mixins';
-@use 'typography';
 @use 'tailwindcss';
 
 html {
@@ -13,8 +12,8 @@ body {
   width: 100%;
   height: 100vh;
 
-  font-family: 'Nekst', Arial, sans-serif;
   background: #2c2c2c;
+
   color: white;
   font-size: 16px;
   line-height: 16px;

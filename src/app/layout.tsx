@@ -7,6 +7,7 @@ import { SITE_NAME } from '@/constants/seo.constants'
 
 import { Providers } from './Providers'
 import './assets/styles/index.scss'
+import { nekstFont } from './lib/fonts'
 
 export const metadata: Metadata = {
   title: {
@@ -22,8 +23,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang='en'>
-      <body className='h-screen flex'>
+    <html lang='ru'>
+      <body className={nekstFont.className}>
         <Providers>
           <Aside />
           <div className='w-full h-full flex flex-col'>
