@@ -1,0 +1,120 @@
+.container {
+  padding: 22px;
+  padding-top: 10px;
+}
+
+.title {
+  display: flex;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+
+  border-bottom: 3px solid #e0e7ff;
+
+  font-size: 2.5rem;
+  color: #dee2e9;
+}
+
+.error {
+  margin-top: 20px;
+  padding: 20px;
+
+  background-color: #fef2f2;
+  border: 1px solid #fbcfe8;
+  border-radius: 8px;
+
+  color: #ef4444;
+}
+
+.courseGrid {
+  display: grid;
+  padding: 0;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+
+  list-style: none;
+}
+
+.courseCard {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.courseLink {
+  display: block;
+  padding: 20px;
+  height: 100%;
+
+  text-decoration: none;
+  color: inherit;
+}
+
+.courseHeader {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.courseName {
+  margin-bottom: 5px;
+
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2d3748;
+}
+
+.courseShortname {
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+.courseSummary {
+  color: #4a5568;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.courseActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  color: #4299e1;
+  font-weight: bold;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: #2b6cb0;
+  }
+}
+
+.actionText {
+  margin-right: 5px;
+}
+
+.actionIcon {
+  font-size: 1.2rem;
+}
+
+.emptyState {
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.emptyText {
+  color: #a0aec0;
+  font-size: 1.1rem;
+}
