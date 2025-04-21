@@ -13,11 +13,14 @@ import styles from './Aside.module.scss'
 import Logo from '@/app/assets/icons/Logo.svg'
 
 export default function Aside() {
-  const { isOpen, toggleAside } = useToggleAside()
+  const { isOpen, toggleAside, asideRef } = useToggleAside()
   const pathName = usePathname()
 
   return (
-    <aside className={cn(styles.aside, { [styles.aside_open]: isOpen })}>
+    <aside
+      className={cn(styles.aside, { [styles.aside_open]: isOpen })}
+      ref={asideRef}
+    >
       <div
         className={styles.aside__logo}
         onClick={toggleAside}
