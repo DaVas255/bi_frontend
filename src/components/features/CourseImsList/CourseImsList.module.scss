@@ -1,0 +1,134 @@
+.container {
+  padding: 22px;
+  padding-top: 10px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  color: #44a2ef;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: #3e7abb;
+  }
+}
+
+.backIcon {
+  margin-right: 3px;
+}
+
+.pageTitle {
+  display: flex;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+
+  border-bottom: 3px solid #e0e7ff;
+
+  font-size: 2.5rem;
+  color: #dee2e9;
+}
+
+.error {
+  padding: 20px;
+  background-color: #fef2f2;
+  border: 1px solid #fbcfe8;
+  color: #ef4444;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.imsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px;
+  padding: 0;
+
+  list-style: none;
+}
+
+.imsCard {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  padding: 25px;
+}
+
+.imsName {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+
+  border-bottom: 1px solid #edf2f7;
+
+  font-size: 1.4rem;
+  font-weight: bold;
+  line-height: 20px;
+  color: #2d3748;
+}
+
+.imsDetails {
+  margin-bottom: 20px;
+  color: #718096;
+
+  p {
+    margin-bottom: 8px;
+  }
+
+  .detailValue {
+    font-weight: bold;
+    color: #374151;
+  }
+}
+
+.imsStructure {
+  margin-top: 20px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  overflow: auto;
+
+  .structureSummary {
+    padding: 15px;
+    background-color: #f7fafc;
+    font-weight: bold;
+    color: #4a5568;
+    cursor: pointer;
+    outline: none;
+
+    &::-webkit-details-marker {
+      color: #4299e1;
+    }
+  }
+
+  .structureContent {
+    padding: 15px;
+    background-color: #edf2f7;
+    white-space: pre-wrap;
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: #2d3748;
+  }
+
+  &__page {
+    border-bottom: 1px solid #cbd5e0;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.noIms {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  color: black;
+  font-size: 1.1rem;
+}

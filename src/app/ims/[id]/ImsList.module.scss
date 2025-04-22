@@ -1,0 +1,61 @@
+.container {
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.loading {
+  color: #777;
+  font-style: italic;
+}
+
+.error {
+  color: #dc3545;
+  margin-top: 10px;
+}
+
+.courseList {
+  list-style: none;
+  padding: 0;
+}
+
+.courseItem {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  padding: 15px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+}
+
+.courseLink {
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+.courseName {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.courseShortname {
+  color: #777;
+  font-size: 0.9em;
+}
+
+.noCourses {
+  color: #777;
+  font-style: italic;
+}
