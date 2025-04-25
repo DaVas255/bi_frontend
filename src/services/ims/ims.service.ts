@@ -1,4 +1,4 @@
-import { IMdlCourse, IMdlImscp } from '@/types/moodle/ims.types'
+import { IMdlCourse, ISelectedImsData } from '@/types/moodle/ims.types'
 
 import { axiosClassic } from '@/api/axios'
 
@@ -11,7 +11,7 @@ class ImsService {
   }
 
   async getImsByCourseId(courseId: number) {
-    const response = await axiosClassic.get<IMdlImscp[]>(
+    const response = await axiosClassic.get<ISelectedImsData>(
       `/ims/course/${courseId}`
     )
     return response.data

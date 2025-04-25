@@ -61,3 +61,8 @@ export interface IMdlImscp {
   timemodified: number
   mdl_course?: IMdlCourse
 }
+
+export interface ISelectedImsData {
+  trackedIms: IMdlImscp[]
+  untrackedIms: IMdlImscp[]
+}
